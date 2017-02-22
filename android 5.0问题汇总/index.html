@@ -1,0 +1,391 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>ANDROID5.0系统开发问题以及新特性</title>
+					
+					<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:30%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:80%;margin-left:15%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>ANDROID5.0系统开发问题以及新特性</h1>
+<p></br></p>
+<h2>系统通知栏图标白板，通知栏图标不全</h2>
+<p>android5.0以上系统（不包含5.0），系统默认通知栏图标为系统启动图标，会自动将通知栏的图标（有色区域）全部填充为白色，像一个白色格子，这是Google 为了实现材料设计规范，特意为之。</p>
+<p>如下图，前2个icon有颜色，后面几个都是白色的。
+<img src="./images/caidanlan.png" style="width:250px;height:170px"><img></p>
+<h3>通知栏白色解决办法</h3>
+<p>通过代码设置通知栏图标</p>
+<pre><code>.setSmallIcon(icon)
+</code></pre>
+
+<p>然后为了去除白色图标，镂空背景即可：
+所以这之后的想要设置显示状态栏icon不为白色：这个icon只要背景需要透明，只让内容块纯白色
+指定最顶层状态栏的小图标大小（60<em>60到80</em>80像素为佳）</p>
+<p><img src="./images/weixin_icon.png" width="100px" > <img></p>
+<h3>通知栏白色解决办法</h3>
+<p>刷新通知的时候，需要刷新通知图标</p>
+<pre><code>contentView.setImageViewResource(R.id.image_tips,context.getApplicationInfo().icon);
+</code></pre>
+
+<p>代码如下：</p>
+<pre><code>@Override
+public void onDownloadSize(long offsize, long size, String speed) {
+    try {
+        contentView.setTextViewText(R.id.name, ToolUtils.getAppname(context));
+        contentView.setImageViewResource(R.id.image_tips,context.getApplicationInfo().icon);
+        contentView.setTextViewText(R.id.tv_progress, ToolUtils.getSize(offsize) + &quot;/&quot; + ToolUtils.getSize(size));
+        contentView.setProgressBar(R.id.progressbar, (int) size, (int) offsize, false);
+        builder.setOngoing(true);
+        Notification notification = builder.build();
+
+        mNotificationManager.notify(NOTIFY_ID, notification);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+
+<h2>新增控件CardView</h2>
+<h3>使用方法</h3>
+<p>5.0新增控件CardView。</p>
+<p>在Android Studio中进行使用，我们需要只需要在Gradle中添加CardView包的依赖即可进行使用。</p>
+<pre><code>compile 'com.android.support:cardview-v7:21.0.+'  
+</code></pre>
+
+<h3>控件基本介绍</h3>
+<pre><code>public class CardView extends FrameLayout implements CardViewDelegate {  
+...  
+}  
+</code></pre>
+
+<p>从源码看，CardView继承FrameLayout，所以CardView是一个ViewGroup，我们可以在里面添加一些控件进行布局。既然CardView继承FrameLayout，而且Android中早已有了FrameLayout布局，为什么还有使用CardView这个布局控件呢？</p>
+<p>这个FrameLayout特殊点就是有rounded corner（圆角）和shadow（阴影），这个就是它的特殊之处，回首往日，我们需要自定义shape文件进行实现圆角和阴影的设计，现在google的大牛已经把它设计为CardView的属性供我们设置进行使用。下面我们看看CardView新增了哪些属性：</p>
+<ul>
+<li>CardView_cardBackgroundColor 设置背景色</li>
+<li>CardView_cardCornerRadius 设置圆角大小</li>
+<li>CardView_cardElevation 设置z轴阴影</li>
+<li>CardView_cardMaxElevation 设置z轴最大高度值</li>
+<li>CardView_cardUseCompatPadding 是否使用CompadPadding</li>
+<li>CardView_cardPreventCornerOverlap 是否使用PreventCornerOverlap</li>
+<li>CardView_contentPadding 内容的padding</li>
+<li>CardView_contentPaddingLeft 内容的左padding</li>
+<li>CardView_contentPaddingTop 内容的上padding</li>
+<li>CardView_contentPaddingRight 内容的右padding</li>
+<li>CardView_contentPaddingBottom 内容的底padding</li>
+</ul>
+<h2>新增控件RecyclerView</h2>
+<p>RecyclerView是ListView的替代品，谷歌推荐使用RecyclerView替代ListView。 </p>
+<p>RecyclerView提供比ListView更加灵活的使用，并且性能比ListView更优。 </p>
+<p>RecyclerView可以设置线性，网格，瀑布流式三种布局管理器。 </p>
+<ul>
+<li>
+<p>LinearLayoutManager（线性布局管理器） </p>
+</li>
+<li>
+<p>GridLayoutManager（网格布局管理器） </p>
+</li>
+<li>
+<p>StaggeredGridLayoutManager（瀑布流式布局管理器）</p>
+</li>
+</ul>
+<h3>开源项目</h3>
+<p>GitHub上的这个开源项目可以帮助解决一些问题，例如添加divider、点击事件等等，但还远远不够。</p>
+<p>CardView的多状态背景色问题，暂时没有解决，<a href="http://stackoverflow.com/questions/25352930/cardview-background-color-states-not-being-respected">参考链接</a>；</p>
+<h3>下拉刷新</h3>
+<p>可使用android原生的SwipeRefreshLayout解决；</p>
+<h3>上拉翻页</h3>
+<ol>
+<li>
+<p>使用SwipeRefreshLayout； </p>
+</li>
+<li>
+<p>自己监听事件实现Endless效果；</p>
+</li>
+</ol>
+<h3>HeaderView</h3>
+<p>RecyclerView没有像ListView那样提供addHeaderView()方法，要实现类似效果，有两种方法：</p>
+<ul>
+<li>
+<p>将第一个item作为header，使用android-parallax-recyclerview这个库； </p>
+</li>
+<li>
+<p>让第一个item完全透明，下层显示一个同高的view作为header，使用ASOV这个库。</p>
+</li>
+</ul>
+<h2>扁平化设计风格（Material Design）</h2>
+<p>谷歌希望能够让Material Design给用户带来纸张化的体验。新的视觉语言，在基本元素的处理上，借鉴了传统的印刷设计，字体版式、网格系统、空间、比例、配色、图像使用等这些基础的平面设计规范。</p>
+<p>其实在GitHub上已经有不少第三方的实现，值得一提的是，这个名为MaterialDesignCenter的项目把大量相关项目汇总在了一起供开发者参考，值得一看。以下列出我认为值得使用的第三方实现：</p>
+<p>FAB: <a href="https://github.com/makovkastar/FloatingActionButton">FloatingActionButton</a></p>
+<p>对话框: <a href="https://github.com/afollestad/material-dialogs">material-dialogs</a></p>
+<p>各类UI控件: <a href="https://github.com/navasmdc/MaterialDesignLibrary">MaterialDesignLibrary</a></p>
+<p>另外几个汇集了android上各类交互效果的项目<a href="https://github.com/Rano1/Interactive-animation">Interactive-animation</a>、<a href="https://github.com/wasabeef/awesome-android-ui">awesome-android-ui</a>、<a href="https://github.com/Trinea/android-open-project">android-open-project</a>（300+项目，不仅限于MD），同样值得参考。</p>
+<h2>SlidingTabLayout的tab导航</h2>
+<p>v7包的Actionbar对象里，与navigation有关的方法（例如setNavigationMode）都不建议使用了，应使用googleio2014提供的SlidingTabLayout实现类似功能。</p>
+<p><a href="https://stackoverflow.com/questions/26540078/use-tab-with-new-toolbar-appcompat-v7-21">参考链接1</a>，<a href="http://blog.csdn.net/mr_wanggang/article/details/42340265">参考链接2</a></p>
+<h2>.9图片在android studio中异常</h2>
+<pre><code>Error:Execution failed for task’:app:mergeDebugResources’. 
+Crunching Cruncher image.9.png failed, see logs 
+</code></pre>
+
+<h3>原因</h3>
+<p>.9图片不标准，在eclipse没有Android studio中严格被检测出错</p>
+<h3>解决</h3>
+<p>用android studio 打开.9图片重新画线</p>
+<h2>android 5.0之后toolbar阴影</h2>
+<p>activity中添加代码 getSupportActionBar().setElevation(0);</p>
+<h2>新的摄像头API</h2>
+<p>来Google本次Android版本更新对Camera这块新出了替代类android.hardware.camera2。</p>
+<p>这个类把Camera设备封装成多级(包含多个处理阶段)的线性管道，这个管道用来处理输入请求中捕获的每个帧。通过camera2向系统请求拍照时，会返回一个带有一套图像缓冲的输出数据包。如果多个请求的会按顺序处理，多次重复请求只发一次。</p>
+<h3>使用新API：</h3>
+<ul>
+<li>
+<p>获取CameraManager实例就可以遍历，查询和打开一个Camera对象。</p>
+</li>
+<li>
+<p>通过cameraManager对象调研getCameraCharacteristics(String)来获得CameraCharacteristics对象，该对象包含设备的设置信息和输出参数。</p>
+</li>
+<li>
+<p>通过CameraCaptureSession对象为每个预览对象进行预设置，如大小和format（这些格式必须是设备支持的），可以调用camera.createCaptureSession(List, CameraCaptureSession.StateCallback, Handler)就可获得此对象。</p>
+</li>
+<li>
+<p>创建SurfaceView orTextureView (via its SurfaceTexture).  渲染图像。系统底层或调用RenderScript或OpenGles，甚至native本地方法来实例传给view的数据。</p>
+</li>
+<li>
+<p>构造一个CaptureRequest对象，来描述每次捕获图片的具体设置。</p>
+</li>
+<li>
+<p>最终调用capture()方法完成图像的捕获。</p>
+</li>
+</ul>
+<h2>RippleDrawable（波纹图）</h2>
+<p>RippleDrawable顾名思义是波纹图，只能在Android5.0以上使用，目前还没有提供RippleDrawable向下兼容的支持包。</p>
+<p>RippleDrawable可显示一个涟漪效应响应状态变化 。  
+</p>
+<h3>效果图</h3>
+<p><img src="./images/fi2I32e.gif"  > <img></p>
+<h3>使用方法</h3>
+<h4>定义一个背景的xml</h4>
+<p>ripple_bg.xml:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;ripple xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  android:color=&quot;#FF21272B&quot;&gt;
+  &lt;item&gt;
+     &lt;shape android:shape=&quot;rectangle&quot;&gt;
+        &lt;solid android:color=&quot;#FFFFFF&quot; /&gt;
+        &lt;corners android:radius=&quot;4dp&quot; /&gt;
+    &lt;/shape&gt;
+  &lt;/item&gt;
+  &lt;item android:drawable=&quot;@drawable/rounded_corners&quot; /&gt;
+&lt;/ripple&gt;
+</code></pre>
+
+<p>其中&lt;ripple android:color=&quot;#FF21272B&quot; .... /&gt;这个是指定水波纹的颜色.</p>
+<p>而<item />里面的东西,我们都很熟悉,就是普通的定义一个带圆角的背景.</p>
+<h4>这是Activity的布局xml</h4>
+<p>activity_main.xml</p>
+<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+  android:layout_width=&quot;match_parent&quot;
+  android:layout_height=&quot;match_parent&quot;
+  android:gravity=&quot;center&quot;
+  android:orientation=&quot;vertical&quot;
+  android:paddingBottom=&quot;@dimen/activity_vertical_margin&quot;
+  android:paddingLeft=&quot;@dimen/activity_horizontal_margin&quot;
+  android:paddingRight=&quot;@dimen/activity_horizontal_margin&quot;
+  android:paddingTop=&quot;@dimen/activity_vertical_margin&quot;
+  tools:context=&quot;.MainActivity&quot;&gt;
+  &lt;TextView
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;@string/hello_world&quot; /&gt;
+  &lt;Button
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:background=&quot;@drawable/ripple_bg&quot;
+    android:text=&quot;@string/hello_world&quot; /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<h1>6.0系统可能出现的问题汇总</h1>
+<p>Android 6.0（API 23）</p>
+<h2>权限问题</h2>
+<p>android的权限系统一直是首要的安全概念，因为这些权限只在安装的时候被询问一次。一旦安装了，后面就不再询问。android 6.0 之后，系统不会在软件安装的时候就赋予该app所有其申请的权限，对于一些危险级别的权限，app需要在运行时一个一个询问用户授予权限。</p>
+<h3>旧版本app兼容问题</h3>
+<p>那么问题来了？是不是所有以前发布的app都会出现问题呢？答案是不会，只有那些targetSdkVersion 设置为23和23以上的应用才会出现异常。</p>
+<p>所以targetSdkVersion如果没有设置为23版本或者以上，系统还是会使用旧规则：在安装的时候赋予该app所申请的所有权限。所以app当然可以和以前一样正常使用了。</p>
+<p>但是还有一点需要注意的是6.0的系统里面，用户可以手动将该app的权限关闭。</p>
+<p>那么问题又来了，如果以前的老应用申请的权限被用户手动关闭了怎么办，应用会崩溃么？我们来试一试</p>
+<p>好吧，可以庆幸了一下了，不会抛出异常，不会崩溃，只不过调用那些被用户禁止权限的api接口返回值都为null或者0，所以我们只需要做一下判空操作就可以了，不判空当然还是会崩溃的喽。</p>
+<p><a href="http://blog.csdn.net/hudashi/article/details/50775180">点击查看详细解决方案</a></p>
+<h3>权限分类</h3>
+<p>系统权限，分为normal和dangerous类型。</p>
+<ul>
+<li>
+<p><strong>normal：</strong>这个权限类型并不直接威胁到用户的隐私，可以直接在manifest清单里注册，系统会帮我们默认授权的。</p>
+</li>
+<li>
+<p><strong>dangerous：</strong>这个可以直接给app访问用户一些敏感的数据，不仅需要在manifest清单里注册，同时在使用的时候，需要向系统请求授权。</p>
+</li>
+</ul>
+<p><strong>注意：</strong>在dangerous中还需要注意一点，SYSTEM_ALERT<em>WINDOW 和 WRITE</em>SETTINGS这两个特殊授权请求方式，跟一般授权请求方式不同。</p>
+<p><a href="http://www.cnblogs.com/cr330326/p/5181283.html">点击查看系统权限分类的详细介绍</a></p>
+<h2>删除HttpClient的相关类</h2>
+<h3>解决方案</h3>
+<p>在相应的module下的build.gradle中加入：</p>
+<pre><code>android {
+    useLibrary 'org.apache.http.legacy'
+}
+</code></pre>
+
+<p>注意放置的位置：是在android {}中</p>
+
+
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+          var css_conf = eval(markdown_panel_style);
+          $('#readme').css(css_conf)
+          
+          var conf = eval(jquery_ztree_toc_opts);
+  				$('#tree').ztree_toc(conf);
+
+				
+			});
+			//-->
+			</SCRIPT>
+	  
